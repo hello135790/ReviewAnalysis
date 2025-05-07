@@ -21,7 +21,7 @@ public class ReviewAnalysis {
             sum += r.getRating();
         }
         return sum/allReviews.length;
-        /* to be implemented in part (a) */ }
+    }
 
     /**
      * Returns an ArrayList of String objects containing formatted versions of
@@ -31,6 +31,16 @@ public class ReviewAnalysis {
      * Postcondition: allReviews is unchanged.
      */
     public ArrayList<String> collectComments() {
-        
+        ArrayList<String> comments = new ArrayList<String>();
+        for (int i = 0; i < allReviews.length; i++)
+        {
+            String s = i + "-" + allReviews[i].getComment();
+            String last = s.substring(s.length() - 1);
+            if (!last.equals(".") && !last.equals("!")) {
+                s += ".";  
+            }
+            if (s.indexOf("!") > 0) comments.add(s);
+        }
+        return comments;
     }
 }
